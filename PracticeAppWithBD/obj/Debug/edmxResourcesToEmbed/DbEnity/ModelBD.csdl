@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="aeroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="ID_comp" />
+    </Key>
+    <Property Name="ID_comp" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Trip" Relationship="Self.FK_Trip_Company" FromRole="Company" ToRole="Trip" />
+  </EntityType>
+  <EntityType Name="Pass_in_trip">
+    <Key>
+      <PropertyRef Name="trip_no" />
+      <PropertyRef Name="date" />
+      <PropertyRef Name="ID_psg" />
+    </Key>
+    <Property Name="trip_no" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ID_psg" Type="Int32" Nullable="false" />
+    <Property Name="place" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Passenger" Relationship="Self.FK_Pass_in_trip_Passenger" FromRole="Pass_in_trip" ToRole="Passenger" />
+    <NavigationProperty Name="Trip" Relationship="Self.FK_Pass_in_trip_Trip" FromRole="Pass_in_trip" ToRole="Trip" />
+  </EntityType>
+  <EntityType Name="Passenger">
+    <Key>
+      <PropertyRef Name="ID_psg" />
+    </Key>
+    <Property Name="ID_psg" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Pass_in_trip" Relationship="Self.FK_Pass_in_trip_Passenger" FromRole="Passenger" ToRole="Pass_in_trip" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Trip">
+    <Key>
+      <PropertyRef Name="trip_no" />
+    </Key>
+    <Property Name="trip_no" Type="Int32" Nullable="false" />
+    <Property Name="ID_comp" Type="Int32" Nullable="false" />
+    <Property Name="plane" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="town_from" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="town_to" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="time_out" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="time_in" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Company" Relationship="Self.FK_Trip_Company" FromRole="Trip" ToRole="Company" />
+    <NavigationProperty Name="Pass_in_trip" Relationship="Self.FK_Pass_in_trip_Trip" FromRole="Trip" ToRole="Pass_in_trip" />
+  </EntityType>
+  <Association Name="FK_Trip_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="Trip" Type="Self.Trip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="ID_comp" />
+      </Principal>
+      <Dependent Role="Trip">
+        <PropertyRef Name="ID_comp" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pass_in_trip_Passenger">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="Pass_in_trip" Type="Self.Pass_in_trip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="ID_psg" />
+      </Principal>
+      <Dependent Role="Pass_in_trip">
+        <PropertyRef Name="ID_psg" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pass_in_trip_Trip">
+    <End Role="Trip" Type="Self.Trip" Multiplicity="1" />
+    <End Role="Pass_in_trip" Type="Self.Pass_in_trip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trip">
+        <PropertyRef Name="trip_no" />
+      </Principal>
+      <Dependent Role="Pass_in_trip">
+        <PropertyRef Name="trip_no" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="aeroEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Company" EntityType="Self.Company" />
+    <EntitySet Name="Pass_in_trip" EntityType="Self.Pass_in_trip" />
+    <EntitySet Name="Passenger" EntityType="Self.Passenger" />
+    <EntitySet Name="Trip" EntityType="Self.Trip" />
+    <AssociationSet Name="FK_Trip_Company" Association="Self.FK_Trip_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="Trip" EntitySet="Trip" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pass_in_trip_Passenger" Association="Self.FK_Pass_in_trip_Passenger">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="Pass_in_trip" EntitySet="Pass_in_trip" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pass_in_trip_Trip" Association="Self.FK_Pass_in_trip_Trip">
+      <End Role="Trip" EntitySet="Trip" />
+      <End Role="Pass_in_trip" EntitySet="Pass_in_trip" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

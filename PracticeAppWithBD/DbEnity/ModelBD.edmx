@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище aeroModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ID_comp" />
+          </Key>
+          <Property Name="ID_comp" Type="int" Nullable="false" />
+          <Property Name="name" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pass_in_trip">
+          <Key>
+            <PropertyRef Name="trip_no" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="ID_psg" />
+          </Key>
+          <Property Name="trip_no" Type="int" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="ID_psg" Type="int" Nullable="false" />
+          <Property Name="place" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Passenger">
+          <Key>
+            <PropertyRef Name="ID_psg" />
+          </Key>
+          <Property Name="ID_psg" Type="int" Nullable="false" />
+          <Property Name="name" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Trip">
+          <Key>
+            <PropertyRef Name="trip_no" />
+          </Key>
+          <Property Name="trip_no" Type="int" Nullable="false" />
+          <Property Name="ID_comp" Type="int" Nullable="false" />
+          <Property Name="plane" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="town_from" Type="char" MaxLength="25" Nullable="false" />
+          <Property Name="town_to" Type="char" MaxLength="25" Nullable="false" />
+          <Property Name="time_out" Type="datetime" Nullable="false" />
+          <Property Name="time_in" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Pass_in_trip_Passenger">
+          <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+          <End Role="Pass_in_trip" Type="Self.Pass_in_trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passenger">
+              <PropertyRef Name="ID_psg" />
+            </Principal>
+            <Dependent Role="Pass_in_trip">
+              <PropertyRef Name="ID_psg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pass_in_trip_Trip">
+          <End Role="Trip" Type="Self.Trip" Multiplicity="1" />
+          <End Role="Pass_in_trip" Type="Self.Pass_in_trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trip">
+              <PropertyRef Name="trip_no" />
+            </Principal>
+            <Dependent Role="Pass_in_trip">
+              <PropertyRef Name="trip_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trip_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Trip" Type="Self.Trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="ID_comp" />
+            </Principal>
+            <Dependent Role="Trip">
+              <PropertyRef Name="ID_comp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище aeroModelContainer">
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pass_in_trip" EntityType="Self.Pass_in_trip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Passenger" EntityType="Self.Passenger" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trip" EntityType="Self.Trip" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Pass_in_trip_Passenger" Association="Self.FK_Pass_in_trip_Passenger">
+            <End Role="Passenger" EntitySet="Passenger" />
+            <End Role="Pass_in_trip" EntitySet="Pass_in_trip" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pass_in_trip_Trip" Association="Self.FK_Pass_in_trip_Trip">
+            <End Role="Trip" EntitySet="Trip" />
+            <End Role="Pass_in_trip" EntitySet="Pass_in_trip" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trip_Company" Association="Self.FK_Trip_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Trip" EntitySet="Trip" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="aeroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ID_comp" />
+          </Key>
+          <Property Name="ID_comp" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Trip" Relationship="Self.FK_Trip_Company" FromRole="Company" ToRole="Trip" />
+        </EntityType>
+        <EntityType Name="Pass_in_trip">
+          <Key>
+            <PropertyRef Name="trip_no" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="ID_psg" />
+          </Key>
+          <Property Name="trip_no" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_psg" Type="Int32" Nullable="false" />
+          <Property Name="place" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Passenger" Relationship="Self.FK_Pass_in_trip_Passenger" FromRole="Pass_in_trip" ToRole="Passenger" />
+          <NavigationProperty Name="Trip" Relationship="Self.FK_Pass_in_trip_Trip" FromRole="Pass_in_trip" ToRole="Trip" />
+        </EntityType>
+        <EntityType Name="Passenger">
+          <Key>
+            <PropertyRef Name="ID_psg" />
+          </Key>
+          <Property Name="ID_psg" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Pass_in_trip" Relationship="Self.FK_Pass_in_trip_Passenger" FromRole="Passenger" ToRole="Pass_in_trip" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Trip">
+          <Key>
+            <PropertyRef Name="trip_no" />
+          </Key>
+          <Property Name="trip_no" Type="Int32" Nullable="false" />
+          <Property Name="ID_comp" Type="Int32" Nullable="false" />
+          <Property Name="plane" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="town_from" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="town_to" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="time_out" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="time_in" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Trip_Company" FromRole="Trip" ToRole="Company" />
+          <NavigationProperty Name="Pass_in_trip" Relationship="Self.FK_Pass_in_trip_Trip" FromRole="Trip" ToRole="Pass_in_trip" />
+        </EntityType>
+        <Association Name="FK_Trip_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Trip" Type="Self.Trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="ID_comp" />
+            </Principal>
+            <Dependent Role="Trip">
+              <PropertyRef Name="ID_comp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pass_in_trip_Passenger">
+          <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+          <End Role="Pass_in_trip" Type="Self.Pass_in_trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passenger">
+              <PropertyRef Name="ID_psg" />
+            </Principal>
+            <Dependent Role="Pass_in_trip">
+              <PropertyRef Name="ID_psg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pass_in_trip_Trip">
+          <End Role="Trip" Type="Self.Trip" Multiplicity="1" />
+          <End Role="Pass_in_trip" Type="Self.Pass_in_trip" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trip">
+              <PropertyRef Name="trip_no" />
+            </Principal>
+            <Dependent Role="Pass_in_trip">
+              <PropertyRef Name="trip_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="aeroEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Company" EntityType="Self.Company" />
+          <EntitySet Name="Pass_in_trip" EntityType="Self.Pass_in_trip" />
+          <EntitySet Name="Passenger" EntityType="Self.Passenger" />
+          <EntitySet Name="Trip" EntityType="Self.Trip" />
+          <AssociationSet Name="FK_Trip_Company" Association="Self.FK_Trip_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Trip" EntitySet="Trip" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pass_in_trip_Passenger" Association="Self.FK_Pass_in_trip_Passenger">
+            <End Role="Passenger" EntitySet="Passenger" />
+            <End Role="Pass_in_trip" EntitySet="Pass_in_trip" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pass_in_trip_Trip" Association="Self.FK_Pass_in_trip_Trip">
+            <End Role="Trip" EntitySet="Trip" />
+            <End Role="Pass_in_trip" EntitySet="Pass_in_trip" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище aeroModelContainer" CdmEntityContainer="aeroEntities">
+          <EntitySetMapping Name="Company">
+            <EntityTypeMapping TypeName="aeroModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="ID_comp" ColumnName="ID_comp" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pass_in_trip">
+            <EntityTypeMapping TypeName="aeroModel.Pass_in_trip">
+              <MappingFragment StoreEntitySet="Pass_in_trip">
+                <ScalarProperty Name="trip_no" ColumnName="trip_no" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ID_psg" ColumnName="ID_psg" />
+                <ScalarProperty Name="place" ColumnName="place" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Passenger">
+            <EntityTypeMapping TypeName="aeroModel.Passenger">
+              <MappingFragment StoreEntitySet="Passenger">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ID_psg" ColumnName="ID_psg" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trip">
+            <EntityTypeMapping TypeName="aeroModel.Trip">
+              <MappingFragment StoreEntitySet="Trip">
+                <ScalarProperty Name="trip_no" ColumnName="trip_no" />
+                <ScalarProperty Name="ID_comp" ColumnName="ID_comp" />
+                <ScalarProperty Name="plane" ColumnName="plane" />
+                <ScalarProperty Name="town_from" ColumnName="town_from" />
+                <ScalarProperty Name="town_to" ColumnName="town_to" />
+                <ScalarProperty Name="time_out" ColumnName="time_out" />
+                <ScalarProperty Name="time_in" ColumnName="time_in" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

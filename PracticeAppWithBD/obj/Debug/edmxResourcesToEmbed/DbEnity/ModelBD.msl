@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище aeroModelContainer" CdmEntityContainer="aeroEntities">
+    <EntitySetMapping Name="Company">
+      <EntityTypeMapping TypeName="aeroModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="ID_comp" ColumnName="ID_comp" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pass_in_trip">
+      <EntityTypeMapping TypeName="aeroModel.Pass_in_trip">
+        <MappingFragment StoreEntitySet="Pass_in_trip">
+          <ScalarProperty Name="trip_no" ColumnName="trip_no" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="ID_psg" ColumnName="ID_psg" />
+          <ScalarProperty Name="place" ColumnName="place" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Passenger">
+      <EntityTypeMapping TypeName="aeroModel.Passenger">
+        <MappingFragment StoreEntitySet="Passenger">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ID_psg" ColumnName="ID_psg" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trip">
+      <EntityTypeMapping TypeName="aeroModel.Trip">
+        <MappingFragment StoreEntitySet="Trip">
+          <ScalarProperty Name="trip_no" ColumnName="trip_no" />
+          <ScalarProperty Name="ID_comp" ColumnName="ID_comp" />
+          <ScalarProperty Name="plane" ColumnName="plane" />
+          <ScalarProperty Name="town_from" ColumnName="town_from" />
+          <ScalarProperty Name="town_to" ColumnName="town_to" />
+          <ScalarProperty Name="time_out" ColumnName="time_out" />
+          <ScalarProperty Name="time_in" ColumnName="time_in" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
