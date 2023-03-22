@@ -64,6 +64,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DbEnity\Company.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbEnity\Passenger.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbEnity\Pass_in_trip.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbEnity\Trip.cs">
+      <DependentUpon>ModelBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="View\TripWindow.xaml.cs">
       <DependentUpon>TripWindow.xaml</DependentUpon>
     </Compile>
@@ -76,9 +88,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DbEnity\AppData.cs" />
-    <Compile Include="DbEnity\Company.cs">
-      <DependentUpon>ModelBD.tt</DependentUpon>
-    </Compile>
     <Compile Include="DbEnity\ModelBD.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -93,15 +102,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelBD.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="DbEnity\Passenger.cs">
-      <DependentUpon>ModelBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbEnity\Pass_in_trip.cs">
-      <DependentUpon>ModelBD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbEnity\Trip.cs">
-      <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

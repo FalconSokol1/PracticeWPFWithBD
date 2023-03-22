@@ -22,19 +22,31 @@ namespace PracticeAppWithBD
     /// </summary>
     public partial class MainWindow : Window
     {
+       
         public MainWindow()
         {
             InitializeComponent();
         }
 
+       
+            
+        
+
         private void btnEnter(object sender, RoutedEventArgs e)
         {
-            var CurrenUser = AppData.db.Passenger.FirstOrDefault(u => u.name == tbxName.Text && u.Password == txbPassword.Text);
+            var CurrenUser = AppData.db.Passenger.FirstOrDefault(u => u.name == tbxName.Text && u.ID_psg.ToString() == txbId.Text);
 
-            if(CurrenUser != null)
+            
+            
+          
+
+            if (CurrenUser != null)
             {
-                TripWindow tripWindow = new TripWindow();
+                TripWindow tripWindow = new TripWindow(tbxName.Text, txbId.Text);
                 tripWindow.Show();
+                
+                
+
                 this.Close();
                 
             }
