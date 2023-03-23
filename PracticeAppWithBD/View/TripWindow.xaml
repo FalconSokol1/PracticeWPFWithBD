@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PracticeAppWithBD.View"
         mc:Ignorable="d"
+        
         Title="TripWindow" Height="340" Width="800" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="#FF00CAFF">
     <Grid>
         <TextBlock Name="txbReys"   HorizontalAlignment="Left" Margin="165,145,0,0" TextWrapping="Wrap" Text="Рейс:" VerticalAlignment="Top" Width="275" FontWeight="Bold" FontSize="18" RenderTransformOrigin="0.5,0.5">

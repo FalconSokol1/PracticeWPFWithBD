@@ -1,0 +1,26 @@
+﻿<Window x:Class="PracticeAppWithBD.View.NewTrip"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PracticeAppWithBD.View"
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        Title="AuthAdmin" Height="450" Width="400" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF00CAFF">
+    <Grid>
+        <Button Click="BtnOk"   Content="Готово" HorizontalAlignment="Center" Margin="0,355,0,0" VerticalAlignment="Top" Height="40" Width="80"/>
+        <TextBlock  HorizontalAlignment="Left" Margin="37,70,0,0" TextWrapping="Wrap" Text="Номер борта" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="37,103,0,0" TextWrapping="Wrap" Text="Название самолёта" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="37,139,0,0" TextWrapping="Wrap" Text="Место отправления" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="37,0,0,0" TextWrapping="Wrap" Text="Время отправления" VerticalAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Left" Margin="37,179,0,0" TextWrapping="Wrap" Text="Место прибытия" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="37,254,0,0" TextWrapping="Wrap" Text="Время прибытия" VerticalAlignment="Top"/>
+        <TextBox Name="txbTimeIn" HorizontalAlignment="Left" Margin="160,254,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txbTimeOut" HorizontalAlignment="Left" Margin="160,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120"/>
+        <TextBox Name="txbTownTo" HorizontalAlignment="Left" Margin="160,179,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txbTownFrom" HorizontalAlignment="Left" Margin="160,138,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txbPlane" HorizontalAlignment="Left" Margin="160,103,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txbTrip_no" HorizontalAlignment="Left" Margin="160,70,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>

@@ -1,7 +1,7 @@
 ﻿using PracticeAppWithBD.DbEnity;
-using PracticeAppWithBD.View;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,25 +12,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PracticeAppWithBD
+namespace PracticeAppWithBD.View
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для AuthAdmin.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AuthAdmin : Window
     {
-       
-        public MainWindow()
+        
+        public AuthAdmin()
         {
             InitializeComponent();
-        }
 
-       
-            
-        
+           
+        }
 
         private void btnEnter(object sender, RoutedEventArgs e)
         {
@@ -38,13 +35,11 @@ namespace PracticeAppWithBD
 
             if (CurrenUser != null)
             {
-                TripWindow tripWindow = new TripWindow(tbxName.Text, txbId.Text);
-                tripWindow.Show();
-                
-                
+                WorkSpace workSpace = new WorkSpace();
+                workSpace.Show();
 
                 this.Close();
-                
+
             }
         }
     }

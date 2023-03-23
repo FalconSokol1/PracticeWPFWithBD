@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Admin\source\repos\PracticeAppWithBD\PracticeAppWithBD\App.xaml
-259417299
+5-1705951795
 2-45064429
-15-1546552554
+191571786604
 181546685823
-MainWindow.xaml;View\TripWindow.xaml;
+MainWindow.xaml;View\AuthAdmin.xaml;View\NewTrip.xaml;View\TripWindow.xaml;View\WorkSpace.xaml;
 
-False
+True
 

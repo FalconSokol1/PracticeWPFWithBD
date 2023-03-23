@@ -49,7 +49,6 @@ namespace PracticeAppWithBD.View
                 txbPlace.Text = "Номер вашего места: " + sdr["place"].ToString();
                 txbDate.Text = "Дата полёта: " + sdr["date"].ToString();
 
-
             }
 
             connection.Close();

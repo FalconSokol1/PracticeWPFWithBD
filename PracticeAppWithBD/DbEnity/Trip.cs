@@ -10,6 +10,7 @@
 namespace PracticeAppWithBD.DbEnity
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     
     public partial class Trip
@@ -31,5 +32,7 @@ namespace PracticeAppWithBD.DbEnity
         public virtual Company Company { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pass_in_trip> Pass_in_trip { get; set; }
+
+        
     }
 }

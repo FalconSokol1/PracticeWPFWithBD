@@ -8,6 +8,8 @@ namespace PracticeAppWithBD.DbEnity
 {
     public static class AppData
     {
-        public static aeroEntities db = new aeroEntities();
+        public static aeroEntities db { get; set; } = new aeroEntities();
+        
+
     }
 }

@@ -8,14 +8,14 @@
         Title="MainWindow" Height="450" Width="600" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF00CAFF">
     <Grid>
         <Button Click="btnEnter" Content="Войти" HorizontalAlignment="Left" Margin="240,305,0,0" VerticalAlignment="Top" Height="43" Width="129" FontWeight="Bold"/>
-        <Label Content="AeroPassager" HorizontalAlignment="Center" Margin="0,83,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"/>
+        <Label Content="AeroPassager" HorizontalAlignment="Center" Margin="0,115,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"/>
 
         <TextBox Name ="tbxName" HorizontalAlignment="Left" Margin="240,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129"/>
         <TextBox Name ="txbId" HorizontalAlignment="Left" Margin="240,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129"/>
 
         <Label Content="Логин" HorizontalAlignment="Left" Margin="175,168,0,0" VerticalAlignment="Top" Width="50"/>
         <Label Content="ID" HorizontalAlignment="Left" Margin="190,216,0,0" VerticalAlignment="Top" Width="60"/>
-        <Image Margin="240,-30,101,300" Source="/Media/pngwing.com (12).png" Stretch="Fill"/>
+        <Image Margin="231,5,110,278" Source="/Media/pngwing.com (12).png" Stretch="Fill"/>
 
     </Grid>
 </Window>

@@ -23,3 +23,9 @@ C:\Users\Admin\source\repos\PracticeAppWithBD\PracticeAppWithBD\obj\Debug\Practi
 C:\Users\Admin\source\repos\PracticeAppWithBD\PracticeAppWithBD\obj\Debug\PracticeAppWithBD.csproj.CopyComplete
 C:\Users\Admin\source\repos\PracticeAppWithBD\PracticeAppWithBD\obj\Debug\PracticeAppWithBD.exe
 C:\Users\Admin\source\repos\PracticeAppWithBD\PracticeAppWithBD\obj\Debug\PracticeAppWithBD.pdb
+C:\Users\Admin\source\repos\PracticeAppWithBD\PracticeAppWithBD\obj\Debug\View\AuthAdmin.g.cs
+C:\Users\Admin\source\repos\PracticeAppWithBD\PracticeAppWithBD\obj\Debug\View\WorkSpace.g.cs
+C:\Users\Admin\source\repos\PracticeAppWithBD\PracticeAppWithBD\obj\Debug\View\AuthAdmin.baml
+C:\Users\Admin\source\repos\PracticeAppWithBD\PracticeAppWithBD\obj\Debug\View\WorkSpace.baml
+C:\Users\Admin\source\repos\PracticeAppWithBD\PracticeAppWithBD\obj\Debug\View\NewTrip.g.cs
+C:\Users\Admin\source\repos\PracticeAppWithBD\PracticeAppWithBD\obj\Debug\View\NewTrip.baml

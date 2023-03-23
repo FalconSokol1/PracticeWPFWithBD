@@ -76,8 +76,18 @@
     <Compile Include="DbEnity\Trip.cs">
       <DependentUpon>ModelBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\BaseVM.cs" />
+    <Compile Include="View\AuthAdmin.xaml.cs">
+      <DependentUpon>AuthAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NewTrip.xaml.cs">
+      <DependentUpon>NewTrip.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\TripWindow.xaml.cs">
       <DependentUpon>TripWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WorkSpace.xaml.cs">
+      <DependentUpon>WorkSpace.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -107,7 +117,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\AuthAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NewTrip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\TripWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WorkSpace.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
