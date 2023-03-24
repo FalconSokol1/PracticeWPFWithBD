@@ -1,11 +1,14 @@
 ﻿using PracticeAppWithBD.DbEnity;
+using PracticeAppWithBD.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,6 +18,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace PracticeAppWithBD.View
 {
@@ -23,47 +27,42 @@ namespace PracticeAppWithBD.View
     /// </summary>
     public partial class WorkSpace : Window
     {
-
+        
         public WorkSpace()
         {
-
-
             InitializeComponent();
-
-
-            
-
-            SqlConnection connectString = new SqlConnection(@"Data Source=DESKTOP-10UBSAS; Initial Catalog=aero; Integrated Security=True");
-            connectString.Open();
-
-            SqlCommand cmd = new SqlCommand
-            {
-                CommandText = "SELECT trip_no, plane, town_from, town_to, time_out, time_in FROM Trip",
-                Connection = connectString
-            };
-
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable("Рейсы");
-            adapter.Fill(dt);
-
-            gdTrip.ItemsSource = dt.DefaultView;
+            this.DataContext = new WorkSpaceVM();
 
         }
+
 
         private void btnNewTrip(object sender, RoutedEventArgs e)
         {
-            NewTrip newTrip = new NewTrip();
-            newTrip.ShowDialog();
+            var newTrip = new NewTrip(null);
+
+            newTrip.Show();
         }
 
-        public void RefreshDataGrid()
+        private void btnDeleteTrip(object sender, RoutedEventArgs e)
         {
-            // Обновляем данные в DataGrid
-            gdTrip.Items.Refresh();
+            (DataContext as WorkSpaceVM).DeleteSelectItem();
         }
 
-      
+        private void btnUpdateGrid(object sender, RoutedEventArgs e)
+        {
+            RefreshData();
+        }
 
-        
+        public void RefreshData()
+        {
+            (DataContext as WorkSpaceVM).LoadData();
+        }
+
+        private void btnUpdateTrip(object sender, RoutedEventArgs e)
+        {
+            var newTrip = new NewTrip((DataContext as WorkSpaceVM).SelectedTrip);
+
+            newTrip.Show();
+        }
     }
 }

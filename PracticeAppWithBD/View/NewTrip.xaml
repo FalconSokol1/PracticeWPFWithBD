@@ -15,12 +15,12 @@
         <TextBlock HorizontalAlignment="Left" Margin="37,0,0,0" TextWrapping="Wrap" Text="Время отправления" VerticalAlignment="Center"/>
         <TextBlock HorizontalAlignment="Left" Margin="37,179,0,0" TextWrapping="Wrap" Text="Место прибытия" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="37,254,0,0" TextWrapping="Wrap" Text="Время прибытия" VerticalAlignment="Top"/>
-        <TextBox Name="txbTimeIn" HorizontalAlignment="Left" Margin="160,254,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txbTimeOut" HorizontalAlignment="Left" Margin="160,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120"/>
-        <TextBox Name="txbTownTo" HorizontalAlignment="Left" Margin="160,179,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txbTownFrom" HorizontalAlignment="Left" Margin="160,138,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txbPlane" HorizontalAlignment="Left" Margin="160,103,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txbTrip_no" HorizontalAlignment="Left" Margin="160,70,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txbTimeIn" Text="{Binding town_out}" HorizontalAlignment="Left" Margin="160,254,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txbTimeOut" Text="{Binding time_out}" HorizontalAlignment="Left" Margin="160,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120"/>
+        <TextBox Name="txbTownTo" Text="{Binding town_to}" HorizontalAlignment="Left" Margin="160,179,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txbTownFrom" Text="{Binding town_from}" HorizontalAlignment="Left" Margin="160,138,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txbPlane" Text="{Binding plane}" HorizontalAlignment="Left" Margin="160,103,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="txbTrip_no" Text="{Binding trip_no}" HorizontalAlignment="Left" Margin="160,70,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

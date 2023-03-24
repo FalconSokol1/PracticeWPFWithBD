@@ -9,7 +9,7 @@
          Title="WorkSpace" Height="550" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF00CAFF">
     <Grid>
 
-        <DataGrid ItemsSource="{Binding Trip}" Name="gdTrip"   IsReadOnly="True" AutoGenerateColumns="False" x:FieldModifier="public" Margin="10,36,10,60">
+        <DataGrid  ItemsSource="{Binding Trip}"  Name="gdTrip"   IsReadOnly="True" AutoGenerateColumns="False" x:FieldModifier="public" Margin="10,36,10,60">
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Header="Номер борта"
@@ -34,7 +34,9 @@
 
         </DataGrid>
         <Button Click="btnNewTrip" Content="Добавить рейс" HorizontalAlignment="Left" Margin="670,502,0,0" VerticalAlignment="Top" Height="38" Width="110"/>
-        <Button Content="Удалить рейс" HorizontalAlignment="Left" Margin="555,502,0,0" VerticalAlignment="Top" Height="38" Width="90"/>
+        <Button Click="btnDeleteTrip" Content="Удалить рейс" HorizontalAlignment="Left" Margin="555,502,0,0" VerticalAlignment="Top" Height="38" Width="90"/>
+        <Button Click="btnUpdateGrid" Content="Обновить таблицу" HorizontalAlignment="Left" Margin="280,502,0,0" VerticalAlignment="Top" Height="38" Width="120"/>
+        <Button Click="btnUpdateTrip" Content="Изменить рейс" HorizontalAlignment="Left" Margin="415,502,0,0" VerticalAlignment="Top" Height="38" Width="120"/>
 
 
 

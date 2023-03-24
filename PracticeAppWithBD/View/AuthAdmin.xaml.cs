@@ -26,7 +26,6 @@ namespace PracticeAppWithBD.View
         {
             InitializeComponent();
 
-           
         }
 
         private void btnEnter(object sender, RoutedEventArgs e)

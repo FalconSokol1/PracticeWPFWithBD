@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,49 +23,104 @@ namespace PracticeAppWithBD.View
     /// </summary>
     public partial class NewTrip : Window
     {
-        public NewTrip()
+        private Trip _tripInfo;
+
+        public NewTrip(Trip trips)
         {
             InitializeComponent();
 
-            
+            if (trips != null)
+            {
+                _tripInfo = trips = new Trip();
+            }
+            else
+            {
+                _tripInfo = trips; 
+            }
+
+
+
         }
 
-       /* private ObservableCollection<Trip> _tripInfo;
 
-        public ObservableCollection<Trip> Trip
-        {
-            
-        get => _tripInfo;
-            set
-            {
-                _tripInfo = value;
-                OnPropertyChanged(nameof(Trip));
-            }
-        }*/
+
         private void BtnOk(object sender, RoutedEventArgs e)
         {
-           
-            Trip trip = new Trip
+
+            using (var db = new aeroEntities())
             {
-                trip_no = Convert.ToInt32(txbTrip_no.Text),
-                plane = txbPlane.Text,
-                town_from = txbTownFrom.Text,
-                town_to = txbTownTo.Text,
-                time_out = Convert.ToDateTime(txbTimeOut.Text),
-                time_in = Convert.ToDateTime(txbTimeIn.Text)
-            };
+                try
+                {
+                    var validateResult = ValidateEntity();
 
-            AppData.db.Trip.Add(trip);
-            AppData.db.SaveChanges();
-            MessageBox.Show("Рейс добавлен!");
+                    if (validateResult.Length > 0)
+                    {
+                        MessageBox.Show(validateResult.ToString(), "Информация", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
 
-           // Trip = new ObservableCollection<Trip>();
+                    db.Trip.AddOrUpdate(_tripInfo);
 
+                    db.SaveChanges();
 
-            Close();
+                    MessageBox.Show("Рейс добавлен", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    (Owner as WorkSpace)?.RefreshData();
+
+                    Owner.Focus();
+
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Информация", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+            }
+
 
         }
+        private StringBuilder ValidateEntity()
+        {
+            var errors = new StringBuilder();
 
-        
+            if (_tripInfo != null)
+            {
+                if (string.IsNullOrEmpty(_tripInfo.trip_no.ToString()))
+                {
+                    errors.AppendLine("Поле наименование 'Номер борта' не может быть пустым!");
+                }
+
+                if (string.IsNullOrEmpty(_tripInfo.plane))
+                {
+                    errors.AppendLine("Поле наименование 'Название самолёта' не может быть пустым!");
+                }
+
+                if (string.IsNullOrEmpty(_tripInfo.town_from))
+                {
+                    errors.AppendLine("Поле наименование 'Место отправления' не может быть пустым!");
+                }
+
+                if (string.IsNullOrEmpty(_tripInfo.town_to))
+                {
+                    errors.AppendLine("Поле наименование'Место прибытия' не может быть пустым!");
+                }
+
+                if (string.IsNullOrEmpty(_tripInfo.time_out.ToString()))
+                {
+                    errors.AppendLine("Поле наименование 'Время отправления' не может быть пустым!");
+                }
+
+                if (string.IsNullOrEmpty(_tripInfo.time_in.ToString()))
+                {
+                    errors.AppendLine("Поле наименование 'Время прибытия' не может быть пустым!");
+                }
+
+            }
+
+            return errors;
+        }
+
+
     }
 }
