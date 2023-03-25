@@ -8,19 +8,44 @@
         ResizeMode="NoResize"
         Title="AuthAdmin" Height="450" Width="400" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF00CAFF">
     <Grid>
-        <Button Click="BtnOk"   Content="Готово" HorizontalAlignment="Center" Margin="0,355,0,0" VerticalAlignment="Top" Height="40" Width="80"/>
-        <TextBlock  HorizontalAlignment="Left" Margin="37,70,0,0" TextWrapping="Wrap" Text="Номер борта" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="37,103,0,0" TextWrapping="Wrap" Text="Название самолёта" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="37,139,0,0" TextWrapping="Wrap" Text="Место отправления" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="37,0,0,0" TextWrapping="Wrap" Text="Время отправления" VerticalAlignment="Center"/>
-        <TextBlock HorizontalAlignment="Left" Margin="37,179,0,0" TextWrapping="Wrap" Text="Место прибытия" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="37,254,0,0" TextWrapping="Wrap" Text="Время прибытия" VerticalAlignment="Top"/>
-        <TextBox Name="txbTimeIn" Text="{Binding town_out}" HorizontalAlignment="Left" Margin="160,254,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txbTimeOut" Text="{Binding time_out}" HorizontalAlignment="Left" Margin="160,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120"/>
-        <TextBox Name="txbTownTo" Text="{Binding town_to}" HorizontalAlignment="Left" Margin="160,179,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txbTownFrom" Text="{Binding town_from}" HorizontalAlignment="Left" Margin="160,138,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txbPlane" Text="{Binding plane}" HorizontalAlignment="Left" Margin="160,103,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="txbTrip_no" Text="{Binding trip_no}" HorizontalAlignment="Left" Margin="160,70,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+
+
+
+        <Button Click="BtnOk"   Content="Готово" HorizontalAlignment="Center" VerticalAlignment="Center" Height="31" Width="60" Grid.Column="1" Grid.Row="8"/>
+        <TextBlock  HorizontalAlignment="Center" TextWrapping="Wrap" Text="Номер борта" VerticalAlignment="Center" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Название самолёта" VerticalAlignment="Center" Grid.Row="2"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Место отправления" VerticalAlignment="Center" Grid.Row="3" TextAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Время отправления" VerticalAlignment="Center" Grid.Row="4"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Место прибытия" VerticalAlignment="Center" Grid.Row="5"/>
+        <TextBlock HorizontalAlignment="Center"  TextWrapping="Wrap" Text="Время прибытия" VerticalAlignment="Center" Grid.Row="6"/>
+        <TextBox Name="txbTimeIn" Text="{Binding town_out}" HorizontalAlignment="Center" Margin="4,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Grid.Column="1" Grid.Row="3"/>
+        <TextBox Name="txbTimeOut" Text="{Binding time_out}" HorizontalAlignment="Center" Margin="4,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Grid.Column="1" Grid.Row="5"/>
+        <TextBox Name="txbTownTo" Text="{Binding town_to}" HorizontalAlignment="Center" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Grid.Column="1" Grid.Row="6" Margin="4,0,0,0"/>
+        <TextBox Name="txbTownFrom" Text="{Binding town_from}" HorizontalAlignment="Center" Margin="4,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Grid.Column="1" Grid.Row="4"/>
+        <TextBox Name="txbPlane" Text="{Binding plane}" HorizontalAlignment="Center" Margin="4,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120" Grid.Column="1" Grid.Row="2"/>
+        <TextBox Name="txbTrip_no" Text="{Binding trip_no}"   TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Grid.Column="1" Grid.Row="1"/>
 
     </Grid>
 </Window>

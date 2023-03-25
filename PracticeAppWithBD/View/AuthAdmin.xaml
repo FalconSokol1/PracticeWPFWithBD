@@ -8,16 +8,27 @@
         ResizeMode="NoResize"
         Title="AuthAdmin" Height="450" Width="600" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF00CAFF">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
 
-        <TextBox Name ="tbxName" HorizontalAlignment="Left" Margin="236,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138"/>
-        <TextBox Name ="txbId" HorizontalAlignment="Left" Margin="236,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="138"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
-        <Label Content="Логин:" HorizontalAlignment="Left" Margin="175,168,0,0" VerticalAlignment="Top" Width="50"/>
-        <Label Content="ID:" HorizontalAlignment="Left" Margin="188,0,0,0" VerticalAlignment="Center" Width="24"/>
 
-        <Button Click="btnEnter" Content="Войти" HorizontalAlignment="Left" Margin="240,305,0,0" VerticalAlignment="Top" Height="43" Width="129" FontWeight="Bold"/>
-        <Label Content="AeroPassager for airport employees" HorizontalAlignment="Center" Margin="0,115,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20"/>
-        <ComboBox HorizontalAlignment="Left" Margin="236,260,0,0" VerticalAlignment="Top" Width="138"/>
+        <TextBox Name ="tbxName"  Width="138" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox Name ="txbId"  HorizontalAlignment="Center" VerticalAlignment="Top"  TextWrapping="Wrap"  Width="138" Grid.Column="1" Grid.Row="1" Margin="0,92,0,0"/>
+
+        <Label Content="Логин:" HorizontalAlignment="Left" Margin="138,0,0,0" VerticalAlignment="Center" Width="50" Grid.Row="1"/>
+        <Label Content="ID:" HorizontalAlignment="Left" Margin="138,88,0,0" VerticalAlignment="Top" Width="24" Grid.Row="1"/>
+
+        <Button Click="btnEnter" Content="Войти" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="43" Width="129" FontWeight="Bold" Grid.Column="1"  Grid.Row="2"/>
         <Label Content="Роль:" HorizontalAlignment="Left" Margin="175,256,0,0" VerticalAlignment="Top" Width="50"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Text="AeroPassager for airport employees"  FontWeight="Bold" Width="180" FontSize="16" TextAlignment="Center"/>
     </Grid>
 </Window>
